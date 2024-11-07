@@ -14,7 +14,7 @@ public class CheckButton extends JButton {
 		container = s;
 
 		listener = e -> {
-			base.submit_entry(getText());
+			base.submit_entry(base.get_entry_text());
 		};
 
 		setText("Check");

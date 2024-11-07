@@ -29,6 +29,10 @@ public class GuessEntry extends JPanel {
 		base.add(this, BorderLayout.SOUTH);
 	}
 
+	public String get_text() {
+		return entry.getText();
+	}
+
 	public void reset() {
 		entry.setText("");
 	}

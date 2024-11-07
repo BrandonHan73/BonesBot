@@ -8,6 +8,7 @@ public class Sidebar extends JPanel {
 	private HintButton hint_button;
 	private SkipButton skip_button;
 	private CheckButton check_button;
+	private ContinueButton continue_button;
 
 	private BoxLayout layout;
 
@@ -22,6 +23,7 @@ public class Sidebar extends JPanel {
 		hint_button = new HintButton(base, this);
 		skip_button = new SkipButton(base, this);
 		check_button = new CheckButton(base, this);
+		continue_button = new ContinueButton(base, this);
 
 		base.add(this, BorderLayout.WEST);
 	}

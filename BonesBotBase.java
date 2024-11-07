@@ -49,6 +49,10 @@ public class BonesBotBase extends JPanel {
 		chat.log(txt);
 	}
 
+	public String get_entry_text() {
+		return entry.get_text();
+	}
+
 	public void enable_continue() {
 		can_continue = true;
 	}
@@ -57,6 +61,7 @@ public class BonesBotBase extends JPanel {
 			randomize();
 			entry.reset();
 			clear_message();
+			can_continue = false;
 		} else {
 			message(ContinueButton.generate_stop_text());
 		}
