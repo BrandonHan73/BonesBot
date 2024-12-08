@@ -11,7 +11,7 @@ public class BonesBotBase extends JPanel {
 	private GuessEntry entry;
 	private Sidebar sidebar;
 
-	private int hint_count;
+	private ArrayList<String> remaining_hints;
 	private Item active_item;
 
 	private ArrayList<Item> items;
@@ -31,11 +31,20 @@ public class BonesBotBase extends JPanel {
 		can_continue = false;
 	}
 
-	public int get_hint_count() {
-		return hint_count;
-	}
-	public void use_hint() {
-		hint_count++;
+	public String use_hint() {
+		String out;
+
+		if(remaining_hints.size() > 0) {
+			int N = remaining_hints.size();
+			int index = (int) (N * Math.random());
+
+			out = remaining_hints.get(index);
+			remaining_hints.remove(index);
+		} else {
+			out = null;
+		}
+
+		return out;
 	}
 
 	public Item get_active_item() {
@@ -53,6 +62,9 @@ public class BonesBotBase extends JPanel {
 		return entry.get_text();
 	}
 
+	public boolean can_continue() {
+		return can_continue;
+	}
 	public void enable_continue() {
 		can_continue = true;
 	}
@@ -60,7 +72,10 @@ public class BonesBotBase extends JPanel {
 		if(can_continue) {
 			randomize();
 			entry.reset();
+
 			clear_message();
+			message("Category is " + active_item.cat);
+
 			can_continue = false;
 		} else {
 			message(ContinueButton.generate_stop_text());

@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -9,6 +10,8 @@ public class GuessEntry extends JPanel {
 
 	private JLabel entry_prompt;
 	private JTextField entry;
+
+	private ActionListener listener;
 
 	private BoxLayout layout;
 
@@ -25,6 +28,16 @@ public class GuessEntry extends JPanel {
 		setLayout(layout);
 		add(entry_prompt);
 		add(entry);
+
+		listener = e -> {
+			if(base.can_continue()) {
+				base.next_item();
+			} else {
+				base.submit_entry(base.get_entry_text());
+			}
+		};
+
+		entry.addActionListener(listener);
 
 		base.add(this, BorderLayout.SOUTH);
 	}

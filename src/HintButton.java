@@ -14,17 +14,12 @@ public class HintButton extends JButton {
 		container = s;
 
 		listener = e -> {
-			switch(base.get_hint_count()) {
-				case 0:
-				base.message(base.get_active_item().name.length() + " characters long");
-				break;
-				case 1:
-				base.message("Category is " + base.get_active_item().cat);
-				break;
-				default:
+			String hint = base.use_hint();
+			if(hint == null) {
 				base.message(generate_text());
+			} else {
+				base.message(hint);
 			}
-			base.use_hint();
 		};
 
 		setText("Hint");

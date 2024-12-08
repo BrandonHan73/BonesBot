@@ -20,12 +20,12 @@ public class Sidebar extends JPanel {
 		layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		setLayout(layout);
 
+		base.add(this, BorderLayout.WEST);
+
 		hint_button = new HintButton(base, this);
 		skip_button = new SkipButton(base, this);
 		check_button = new CheckButton(base, this);
 		continue_button = new ContinueButton(base, this);
-
-		base.add(this, BorderLayout.WEST);
 	}
 
 }
